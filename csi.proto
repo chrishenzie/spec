@@ -420,6 +420,14 @@ message VolumeCapability {
       // Can be published as read/write at multiple nodes
       // simultaneously.
       MULTI_NODE_MULTI_WRITER = 5;
+
+      // Can only be published once as read/write at a single worklad on
+      // a single node, at any given time.
+      SINGLE_NODE_SINGLE_WRITER = 6;
+
+      // Can be published as read/write at multiple workloads on a
+      // single node simultaneously.
+      SINGLE_NODE_MULTI_WRITER = 7;
     }
 
     // This field is REQUIRED.
@@ -1008,6 +1016,10 @@ message ControllerServiceCapability {
       // This enables COs to, for example, fetch per volume
       // condition after a volume is provisioned.
       GET_VOLUME = 12 [(alpha_enum_value) = true];
+
+      // Indicates the SP supports the SINGLE_NODE_MULTI_WRITER access
+      // mode.
+      SINGLE_NODE_MULTI_WRITER = 13;
     }
 
     Type type = 1;
@@ -1440,6 +1452,9 @@ message NodeServiceCapability {
       // Note that, for alpha, `VolumeCondition` is intended to be
       // informative for humans only, not for automation.
       VOLUME_CONDITION = 4 [(alpha_enum_value) = true];
+      // Indicates the SP supports the SINGLE_NODE_MULTI_WRITER access
+      // mode.
+      SINGLE_NODE_MULTI_WRITER = 5;
     }
 
     Type type = 1;

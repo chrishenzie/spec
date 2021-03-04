@@ -2196,6 +2196,9 @@ The following table shows what the Plugin SHOULD return when receiving a second 
 | MULTI_NODE     | OK (idempotent) | ALREADY_EXISTS | OK                  | OK                 |
 | Non MULTI_NODE | OK (idempotent) | ALREADY_EXISTS | FAILED_PRECONDITION | FAILED_PRECONDITION|
 
+# TODO: You need to provide a separate table for SINGLE_NODE_SINGLE_WRITER and SINGLE_NODE_MULTI_WRITER.
+# TODO: You may need to define the protocol for negotiating which table to use depending on the supported access modes.
+
 (`Tn`: target path of the n-th `NodePublishVolume`, `Pn`: other arguments of the n-th `NodePublishVolume` except `secrets`)
 
 ```protobuf
